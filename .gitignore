@@ -1,0 +1,6 @@
+.venv/*
+.venv
+*.log
+test/
+config.py
+__pycache__/
