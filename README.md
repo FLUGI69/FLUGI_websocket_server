@@ -23,18 +23,18 @@ Real-time WebSocket server enabling communication between distributed desktop ap
 
 FLUGI WebSocket Server is a lightweight, namespace-based Socket.IO server that acts as the central hub for real-time client-to-client communication across a distributed desktop application environment.
 
-**Core purpose:** When the companion PyQt6 desktop application is deployed across multiple workstations, each instance connects to this WebSocket server. The server then relays events — such as Redis cache refresh signals, data updates, and automated messages — between all authenticated clients, ensuring every user sees consistent, up-to-date information without manual polling.
+**Core purpose:** When the companion PyQt6 desktop application is deployed across multiple workstations, each instance connects to this WebSocket server. The server then relays events - such as Redis cache refresh signals, data updates, and automated messages - between all authenticated clients, ensuring every user sees consistent, up-to-date information without manual polling.
 
 Key capabilities:
 
-- **Multi-client real-time sync** — broadcasts events to all authenticated clients across namespaces
-- **Token-based authentication** — validates clients on connection using an auth token handshake
-- **Namespace isolation** — organizes communication channels via Socket.IO namespaces (e.g., `/Example`)
-- **Pydantic data models** — strongly typed request/response payloads with automatic model discovery and validation
-- **Structured logging** — color-coded console output and rotating file logs with per-session log files
-- **ASGI architecture** — runs on Uvicorn for high-performance async I/O
-- **Abstract namespace pattern** — easily extensible with new namespace handlers by subclassing `AbstractNamespace`
-- **Environment capture** — records client IP, headers, query parameters, and connection metadata per session
+- **Multi-client real-time sync** - broadcasts events to all authenticated clients across namespaces
+- **Token-based authentication** - validates clients on connection using an auth token handshake
+- **Namespace isolation** - organizes communication channels via Socket.IO namespaces (e.g., `/Example`)
+- **Pydantic data models** - strongly typed request/response payloads with automatic model discovery and validation
+- **Structured logging** - color-coded console output and rotating file logs with per-session log files
+- **ASGI architecture** - runs on Uvicorn for high-performance async I/O
+- **Abstract namespace pattern** - easily extensible with new namespace handlers by subclassing `AbstractNamespace`
+- **Environment capture** - records client IP, headers, query parameters, and connection metadata per session
 
 This repository is a **reference portfolio project** and serves as the server-side counterpart to the [FLUGI Desktop App](https://github.com/FLUGI69/FLUGI_desktop_app).
 
@@ -53,77 +53,77 @@ This repository is a **reference portfolio project** and serves as the server-si
 ## Complete Technology Stack & Libraries
 
 ### WebSocket & Real-time Communication
-- **python-socketio** (5.13.0) — Socket.IO server implementation
-- **python-engineio** (4.12.2) — Engine.IO protocol layer
-- **simple-websocket** (1.1.0) — WebSocket transport
-- **websockets** (15.0.1) — async WebSocket implementation
-- **wsproto** (1.2.0) — WebSocket protocol library
+- **python-socketio** (5.13.0) - Socket.IO server implementation
+- **python-engineio** (4.12.2) - Engine.IO protocol layer
+- **simple-websocket** (1.1.0) - WebSocket transport
+- **websockets** (15.0.1) - async WebSocket implementation
+- **wsproto** (1.2.0) - WebSocket protocol library
 
 ### ASGI Server & Web Framework
-- **uvicorn** (0.35.0) — lightning-fast ASGI server
-- **starlette** (0.47.3) — lightweight ASGI framework
-- **httptools** (0.7.1) — fast HTTP parsing
-- **watchfiles** (1.1.1) — file change detection for auto-reload
+- **uvicorn** (0.35.0) - lightning-fast ASGI server
+- **starlette** (0.47.3) - lightweight ASGI framework
+- **httptools** (0.7.1) - fast HTTP parsing
+- **watchfiles** (1.1.1) - file change detection for auto-reload
 
 ### Data Validation & Serialization
-- **pydantic** (2.12.5) — data validation using Python type hints
-- **pydantic_core** (2.41.5) — core validation logic for Pydantic
-- **annotated-types** (0.7.0) — type annotation utilities
-- **typing-inspection** (>=0.4.2) — type inspection utilities
-- **typing_extensions** (4.15.0) — backported typing features
+- **pydantic** (2.12.5) - data validation using Python type hints
+- **pydantic_core** (2.41.5) - core validation logic for Pydantic
+- **annotated-types** (0.7.0) - type annotation utilities
+- **typing-inspection** (>=0.4.2) - type inspection utilities
+- **typing_extensions** (4.15.0) - backported typing features
 
 ### HTTP & Network
-- **requests** (2.32.5) — HTTP client library
-- **urllib3** (2.5.0) — HTTP client with connection pooling
-- **certifi** (2025.8.3) — Mozilla CA certificate bundle
-- **charset-normalizer** (3.4.3) — character encoding detection
-- **idna** (3.10) — internationalized domain names
-- **anyio** (4.10.0) — async networking and concurrency
-- **sniffio** (1.3.1) — async library detection
-- **h11** (0.16.0) — HTTP/1.1 protocol library
+- **requests** (2.32.5) - HTTP client library
+- **urllib3** (2.5.0) - HTTP client with connection pooling
+- **certifi** (2025.8.3) - Mozilla CA certificate bundle
+- **charset-normalizer** (3.4.3) - character encoding detection
+- **idna** (3.10) - internationalized domain names
+- **anyio** (4.10.0) - async networking and concurrency
+- **sniffio** (1.3.1) - async library detection
+- **h11** (0.16.0) - HTTP/1.1 protocol library
 
 ### Logging & Terminal
-- **colorlog** (6.9.0) — colored terminal logging
-- **colorama** (0.4.6) — cross-platform colored terminal output
+- **colorlog** (6.9.0) - colored terminal logging
+- **colorama** (0.4.6) - cross-platform colored terminal output
 
 ### Configuration
-- **PyYAML** (6.0.3) — YAML parser
-- **python-dotenv** (1.1.1) — environment variable management
-- **click** (8.2.1) — command-line interface utilities
+- **PyYAML** (6.0.3) - YAML parser
+- **python-dotenv** (1.1.1) - environment variable management
+- **click** (8.2.1) - command-line interface utilities
 
 ### Async & Concurrency
-- **bidict** (0.23.1) — bidirectional dictionary (used by Socket.IO internals)
+- **bidict** (0.23.1) - bidirectional dictionary (used by Socket.IO internals)
 
 ## Architecture
 
 ```
 websocket/
-├── __main__.py                        # Entry point — creates server and registers namespaces
+├── __main__.py                        # Entry point - creates server and registers namespaces
 ├── config/
 │   ├── config.py                      # Application configuration (host, port, auth, DB, Redis, logging)
 │   └── config_example.py             # Template config with placeholder values
 ├── dataclass/
-│   └── base.py                        # DataclassBaseModel — Pydantic base with model discovery,
+│   └── base.py                        # DataclassBaseModel - Pydantic base with model discovery,
 │                                      #   recursive serialization, and dynamic model selection
 ├── namespaces/
-│   ├── abstract_namespace.py          # AbstractNamespace — base class for all namespace handlers;
+│   ├── abstract_namespace.py          # AbstractNamespace - base class for all namespace handlers;
 │   │                                  #   manages client sessions, auth, environ capture, broadcasting
 │   └── example_gui/
-│       └── example_gui.py             # ExampleGuiNamespace — concrete handler for the desktop GUI;
+│       └── example_gui.py             # ExampleGuiNamespace - concrete handler for the desktop GUI;
 │                                      #   handles connect/disconnect and redis_refresh broadcasting
 ├── socketio_server/
-│   └── socketio_server.py             # SocketIOServer — wraps Socket.IO + Uvicorn ASGI app
+│   └── socketio_server.py             # SocketIOServer - wraps Socket.IO + Uvicorn ASGI app
 └── utils/
-    ├── logger.py                      # LoggerMixin — structured logging with file + console handlers,
+    ├── logger.py                      # LoggerMixin - structured logging with file + console handlers,
     │                                  #   custom PRINT level, global print/excepthook override
     └── dc/websocket/
-        ├── auto_message.py            # AutoMessage model — server-generated notification messages
-        ├── client.py                  # WebsocketClient model — client identity and auth state
-        ├── environ.py                 # Environ model — captured connection environment metadata
-        ├── redis_event.py             # RedisEvent model — Redis cache invalidation event payload
-        ├── websocket_request.py       # WebsocketRequest model — incoming client request envelope
-        ├── websocket_request_response.py  # WebsocketRequestResponse — acknowledgement payload
-        └── websocket_response.py      # WebsocketResponse model — outgoing server response envelope
+        ├── auto_message.py            # AutoMessage model - server-generated notification messages
+        ├── client.py                  # WebsocketClient model - client identity and auth state
+        ├── environ.py                 # Environ model - captured connection environment metadata
+        ├── redis_event.py             # RedisEvent model - Redis cache invalidation event payload
+        ├── websocket_request.py       # WebsocketRequest model - incoming client request envelope
+        ├── websocket_request_response.py  # WebsocketRequestResponse - acknowledgement payload
+        └── websocket_response.py      # WebsocketResponse model - outgoing server response envelope
 ```
 
 ## How It Works
@@ -144,7 +144,7 @@ websocket/
 
 ### Data Model Discovery
 
-The `DataclassBaseModel.select_model()` method dynamically discovers all model classes in the `utils/dc/websocket/` directory. When a dict payload arrives with a `__class__` key, the server automatically instantiates the correct Pydantic model — enabling type-safe, extensible message schemas without manual registration.
+The `DataclassBaseModel.select_model()` method dynamically discovers all model classes in the `utils/dc/websocket/` directory. When a dict payload arrives with a `__class__` key, the server automatically instantiates the correct Pydantic model - enabling type-safe, extensible message schemas without manual registration.
 
 ## Python 3.14.3 Setup
 
@@ -232,9 +232,9 @@ cp websocket/config/config_example.py websocket/config/config.py
 ```
 
 3. Provide values for:
-	 - `websocket.host` / `websocket.port` — server bind address
-	 - `websocket.auth_token` — shared secret for client authentication
-	 - `log.level` — logging verbosity (`DEBUG`, `INFO`, `WARNING`, etc.)
+	 - `websocket.host` / `websocket.port` - server bind address
+	 - `websocket.auth_token` - shared secret for client authentication
+	 - `log.level` - logging verbosity (`DEBUG`, `INFO`, `WARNING`, etc.)
 	 - Database and Redis credentials (if applicable)
 
 Important:
@@ -296,9 +296,9 @@ class MyEvent(DataclassBaseModel):
     field_two: int
 ```
 
-The model is automatically discovered and available for deserialization — no manual registration needed.
+The model is automatically discovered and available for deserialization - no manual registration needed.
 
-> **Important:** The data models defined in `websocket/utils/dc/websocket/` must be identical across the server and **all connected clients** — whether they are desktop GUI apps, web applications, or any other service. When Client 1 (e.g., a GUI instance) emits an event, the server deserializes it using its local model, then broadcasts it to Client 2 (another GUI instance) and Client 3 (e.g., a web app) — each of which deserializes the payload using the same model on their side. If the models are out of sync (e.g., a field is missing or renamed on one side), deserialization will fail and the event will be lost. Always keep the model definitions synchronized between this server and every client that connects to it.
+> **Important:** The data models defined in `websocket/utils/dc/websocket/` must be identical across the server and **all connected clients** - whether they are desktop GUI apps, web applications, or any other service. When Client 1 (e.g., a GUI instance) emits an event, the server deserializes it using its local model, then broadcasts it to Client 2 (another GUI instance) and Client 3 (e.g., a web app) - each of which deserializes the payload using the same model on their side. If the models are out of sync (e.g., a field is missing or renamed on one side), deserialization will fail and the event will be lost. Always keep the model definitions synchronized between this server and every client that connects to it.
 
 ## Author
 
