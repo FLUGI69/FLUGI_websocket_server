@@ -33,7 +33,7 @@ class Config(object):
         level = "DEBUG"                    
         file_name = "app.log" 
         path = Path(__file__).parent.parent / "log"   
-        fmt = "%(asctime)s [%(levelname)s] %(name)s - %(message)s"
+        fmt = "%(asctime)s %(process)d %(processName)s %(threadName)s %(levelname)s %(name)s %(module)s.%(funcName)s:%(lineno)d # %(message)s"
         print_level = 15
         
 

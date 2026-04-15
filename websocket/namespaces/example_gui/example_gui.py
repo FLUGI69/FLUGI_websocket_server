@@ -70,6 +70,32 @@ class ExampleGuiNamespace(AbstractNamespace):
                     sender_sid = sid, 
                     namespace = self.namespace
                 )
+                
+    async def on_reminder_action(self, sid: str, data: dict):
+        
+        if self.current_client.authenticated:
+
+            if isinstance(data, dict):
+    
+                request = WebsocketRequest.model_validate(data)
+                
+                self.log.debug("Received reminder action request from client '%s' in namespace '%s': %s" % (
+                    self.current_client.name,
+                    self.namespace,
+                    str(request)
+                    )
+                )
+                
+                await self.broadcast_event(
+                    "websocket_response", 
+                    WebsocketResponse(
+                        success = request.success,
+                        error = request.error,
+                        data = request.data
+                    ), 
+                    sender_sid = sid, 
+                    namespace = self.namespace
+                )
         
     async def disconnected(self, sid: str, reason: str) -> WebsocketResponse:
         

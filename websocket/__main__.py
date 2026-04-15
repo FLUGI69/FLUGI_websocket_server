@@ -5,6 +5,8 @@ from namespaces import ExampleGuiNamespace
 
 if __name__ == "__main__":
     
+    server = None
+    
     try:
         
         server = SocketIOServer(
@@ -19,4 +21,5 @@ if __name__ == "__main__":
         
     except Exception as e:
         
-        server.log.exception("Unhandled exception: %s", str(e))
+        if server is not None:
+            server.log.exception("Unhandled exception: %s", str(e))

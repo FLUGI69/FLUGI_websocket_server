@@ -83,7 +83,7 @@ class LoggerMixin:
 
         console_handler = logging.StreamHandler()
         console_formatter = colorlog.ColoredFormatter(
-            "%(log_color)s%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+            "%(log_color)s%(asctime)s %(process)d %(processName)s %(threadName)s %(levelname)s %(name)s %(module)s.%(funcName)s:%(lineno)d # %(message)s",
             datefmt = "%Y-%m-%d %H:%M:%S",
             log_colors = {
                 'DEBUG': 'light_blue',
@@ -137,6 +137,7 @@ class LoggerMixin:
         
         sqla_engine_logger.setLevel(logging.ERROR)
         logging.getLogger("paramiko").setLevel(logging.WARNING) 
+        logging.getLogger("asyncio").setLevel(logging.WARNING)
         
         cls._root_configured = True
 

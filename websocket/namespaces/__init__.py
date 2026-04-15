@@ -1,1 +1,1 @@
-from .example_gui import ExampleGuiNamespace
+from .cooltech_gui import CooltechGuiNamespace
