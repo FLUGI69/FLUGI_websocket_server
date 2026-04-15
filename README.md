@@ -302,7 +302,7 @@ The model is automatically discovered and available for deserialization - no man
 
 ## Author
 
-**Flugi**
+**Tamás Jerzsabek**
 
 ## License
 
