@@ -306,4 +306,6 @@ The model is automatically discovered and available for deserialization — no m
 
 ## License
 
-This project is a reference portfolio project and is not licensed for production use.
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Copyright (c) 2025-2026 FLUGI69
