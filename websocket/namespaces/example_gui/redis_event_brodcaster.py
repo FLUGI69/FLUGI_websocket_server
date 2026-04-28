@@ -5,7 +5,7 @@ from utils.dc.websocket.auto_message import AutoMessage
 from utils.dc.websocket.websocket_request import WebsocketRequest
 from utils.dc.websocket.websocket_response import WebsocketResponse
 
-class ExampleGuiNamespace(AbstractNamespace):
+class ExampleRedisEventBroadcasterNamespace(AbstractNamespace):
     
     log: logging.Logger
     
@@ -23,11 +23,17 @@ class ExampleGuiNamespace(AbstractNamespace):
                 success = True,
                 error = None,
                 data = AutoMessage(
-                    message = "%s has successfully connected to the server" % self.current_client.name
+                    message = "%s has successfully connected to the server | Namespace: '%s'" % (
+                        self.current_client.name, 
+                        self.namespace
                     )
                 )
+            )
             
-            self.log.info("%s has successfully connected to the server" % self.current_client.name)
+            self.log.info("%s has successfully connected to the server | Namespace: '%s'" % (
+                self.current_client.name, 
+                self.namespace
+            ))
             
             self.log.debug("%s -> Session details | session id: %s - path: %s - ip: %s - query_string: %s" % (
                 self.current_client.name,
@@ -70,7 +76,7 @@ class ExampleGuiNamespace(AbstractNamespace):
                     sender_sid = sid, 
                     namespace = self.namespace
                 )
-                
+    
     async def on_reminder_action(self, sid: str, data: dict):
         
         if self.current_client.authenticated:
@@ -96,7 +102,7 @@ class ExampleGuiNamespace(AbstractNamespace):
                     sender_sid = sid, 
                     namespace = self.namespace
                 )
-        
+                
     async def disconnected(self, sid: str, reason: str) -> WebsocketResponse:
         
         if self.current_client is not None:
@@ -107,11 +113,17 @@ class ExampleGuiNamespace(AbstractNamespace):
                 success = True,
                 error = None,
                 data = AutoMessage(
-                    message = "%s has successfully disconnected from the server" % self.current_client.name
+                    message = "%s has successfully disconnected from the server | Namespace: '%s'" % (
+                        self.current_client.name,
+                        self.namespace
+                    )
                 )
             )
             
-            self.log.info("%s has successfully disconnected from the server" % self.current_client.name)
+            self.log.info("%s has successfully disconnected from the server | Namespace: '%s'" % (
+                self.current_client.name, 
+                self.namespace
+            ))
             
             self.log.debug("%s -> Session details | session id: %s - path: %s - ip: %s - query_string: %s" % (
                 self.current_client.name,

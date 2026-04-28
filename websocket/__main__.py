@@ -1,7 +1,7 @@
 from socketio_server import SocketIOServer
 from config import Config
-from namespaces import ExampleGuiNamespace 
-# from .namespaces import ExampleWebNamespace
+from namespaces import ExampleGmailPushNotificationNamespace, ExampleRedisEventBroadcasterNamespace 
+
 
 if __name__ == "__main__":
     
@@ -13,7 +13,8 @@ if __name__ == "__main__":
             host = Config.websocket.host,
             port = Config.websocket.port,
             namespaces = [
-                ExampleGuiNamespace("/Example")
+                ExampleGmailPushNotificationNamespace("/example_gui/gmail_push_notification"),
+                ExampleRedisEventBroadcasterNamespace("/example_gui/redis_event_broadcaster")
             ]
         )
         

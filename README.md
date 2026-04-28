@@ -232,10 +232,10 @@ cp websocket/config/config_example.py websocket/config/config.py
 ```
 
 3. Provide values for:
-	 - `websocket.host` / `websocket.port` - server bind address
-	 - `websocket.auth_token` - shared secret for client authentication
-	 - `log.level` - logging verbosity (`DEBUG`, `INFO`, `WARNING`, etc.)
-	 - Database and Redis credentials (if applicable)
+	- `websocket.host` / `websocket.port` - server bind address
+	- `websocket.auth_token` - shared secret for client authentication
+	- `log.level` - logging verbosity (`DEBUG`, `INFO`, `WARNING`, etc.)
+	- Database and Redis credentials (if applicable)
 
 Important:
 

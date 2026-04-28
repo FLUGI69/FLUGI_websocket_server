@@ -1,1 +1,1 @@
-from .cooltech_gui import CooltechGuiNamespace
+from .example_gui import ExampleGmailPushNotificationNamespace, ExampleRedisEventBroadcasterNamespace

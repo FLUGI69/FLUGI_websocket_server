@@ -1,1 +1,2 @@
-from .example_gui import ExampleGuiNamespace
+from .gmail_push_notification import ExampleGmailPushNotificationNamespace
+from .redis_event_brodcaster import ExampleRedisEventBroadcasterNamespace
